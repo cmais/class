@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gerenciador de Acessos</title>
+    <style id="estilo-principal">
+        :root{
+            --bg: #121212;
+            --muted-bg: #1f1f1f;
+            --text: #e0e0e0;
+            --accent: #0ea5e9; 
+            --accent-strong: #0284c7;
+            --accent-cta: #38bdf8;
+            --border: #2a2a2a;
+            --toast-bg: #0ea5e9;
+            --toast-text: #ffffff;
+            --radius: 6px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        h1 { 
+            color: var(--accent); 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .no-export { margin-bottom: 20px; }
+
+        #painel-importacao {
+            background: var(--muted-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .campo-grupo { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-size: 12px; color: var(--accent-cta); font-weight: bold; text-transform: uppercase; }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background: #000; color: #22c55e;
+            border: 1px solid var(--border);
+            padding: 10px; font-family: 'Consolas', monospace;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        .btn-group { margin-top: 15px; display: flex; gap: 10px; }
+
+        .btn {
+            padding: 12px 20px; border-radius: 4px; border: none;
+            cursor: pointer; font-weight: bold; font-size: 11px;
+            text-transform: uppercase; transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-export { background: #10b981; color: white; }
+
+        /* Tabela Institucional */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; margin-top: 10px; }
+        th { 
+            background: var(--muted-bg); color: var(--accent-cta); 
+            padding: 12px; border: 1px solid var(--border); 
+            text-transform: uppercase; font-size: 12px; 
+        }
+        td { padding: 12px; border: 1px solid var(--border); font-size: 14px; }
+
+        .coluna-aluno { 
+            font-family: 'Verdana', Geneva, sans-serif; 
+            text-transform: uppercase; font-weight: 600; 
+        }
+
+        .login-cell { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .copy-btn {
+            background: var(--accent); color: white; border: none;
+            padding: 6px 12px; border-radius: 3px; cursor: pointer; font-size: 10px;
+            text-transform: uppercase; font-weight: bold;
+        }
+        .copy-btn:hover { background: var(--accent-strong); }
+
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: var(--toast-bg); color: white; padding: 10px 20px;
+            border-radius: 20px; display: none; font-weight: bold; z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="titulo-pagina">2B16</h1>
+
+    
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Login</th>
+                    <th>Senha</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela"><tr>
+                <td class="coluna-aluno">ALICE YUNA KOWATA HIDANI</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14275</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">ANTHONY ROVAGNOLI BROGE</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14268</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">AURORA FAGUNDES REBOUÇAS</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14267</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">CAROLINE AZEVEDO DE FARIAS</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14253</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">CECÍLIA SENE APOITIA</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14287</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">CHIARA RODRIGUEZ SEVERI</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14270</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">CLARICE ARAUJO MISUMI</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14271</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">ERIC ONISHI NAKAZATO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14281</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">FELIPE BENÍCIO R. C. TREISZ DE QUEIROGA</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14303</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">GABRIELA MONTE ALTO DE PONTI</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14277</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">JULIO MACIEL LOURENÇO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14234</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">LETÍCIA SAORI KOWATA FUJIKI</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14276</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">LIGIA VON GRAPP</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14284</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">MAITÊ MARIA BALDUINO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14286</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">MANUELA D'AGOSTINO VIVÊNCIO IMAD</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14248</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">MARIA CLARA TCHEON SERRANO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14283</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">MARIA LUISA MAIA UTIDA</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14249</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">NICHOLAS DE ALMEIDA TEIXEIRA</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14285</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">SERENA OLIVEIRA CASSAB</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14395</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">SOFIA MISAKI HARAYASHIKI KOTO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14269</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr><tr>
+                <td class="coluna-aluno">SOPHIA SANTOS DE OLIVEIRA CARDOSO</td>
+                <td>
+                    <div class="login-cell">
+                        <span class="txt-login">JPI14278</span>
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;" class="txt-senha">aluno123</td>
+            </tr></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="toast" class="toast">Copiado!</div>
+
+<script id="script-util">
+            function copiar(texto) {
+                const realizarCopia = () => {
+                    const t = document.getElementById('toast');
+                    t.style.display = 'block';
+                    setTimeout(() => t.style.display = 'none', 1200);
+                };
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(texto).then(realizarCopia).catch(() => fallbackCopia(texto, realizarCopia));
+                } else {
+                    fallbackCopia(texto, realizarCopia);
+                }
+            }
+
+            function fallbackCopia(texto, callback) {
+                const textArea = document.createElement("textarea");
+                textArea.value = texto;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try { document.execCommand('copy'); callback(); } catch (err) {}
+                document.body.removeChild(textArea);
+            }
+
+            // Reatribui os eventos de clique que se perdem na clonagem de strings
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                const loginText = btn.previousElementSibling.textContent;
+                btn.onclick = () => copiar(loginText);
+            });
+        </script>
+
+
+
+</body></html>
