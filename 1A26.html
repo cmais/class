@@ -1,281 +1,290 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Lista de Alunos</title>
-    <style>
+<html lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gerenciador de Acessos</title>
+    <style id="estilo-principal">
         :root{
             --bg: #121212;
             --muted-bg: #1f1f1f;
             --text: #e0e0e0;
-            --accent: #bb86fc;
-            --accent-strong: #3700b3;
-            --accent-cta: #03dac6;
+            --accent: #0ea5e9; 
+            --accent-strong: #0284c7;
+            --accent-cta: #38bdf8;
             --border: #2a2a2a;
-            --toast-bg: #03dac6;
-            --toast-text: #121212;
+            --toast-bg: #0ea5e9;
+            --toast-text: #ffffff;
             --radius: 6px;
         }
 
-        html,body{height:100%;margin:0}
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-family: system-ui, -apple-system, sans-serif;
             padding: 20px;
-            -webkit-font-smoothing:antialiased;
+            margin: 0;
         }
 
-        h1 { color: var(--accent); text-align:center; margin:0 0 24px 0; }
+        .container { max-width: 1000px; margin: 0 auto; }
 
-        .table-wrap {
-            width:100%;
-            max-width:1000px;
-            margin:0 auto;
-            overflow-x:auto;
-            padding:8px 0;
+        h1 { 
+            color: var(--accent); 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        table.tabela-credenciais {
-            width:100%;
-            border-collapse:collapse;
-            min-width:640px;
+        .no-export { margin-bottom: 20px; }
+
+        #painel-importacao {
+            background: var(--muted-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
         }
 
-        .tabela-credenciais caption{
-            caption-side: top;
-            text-align:left;
-            font-weight:700;
-            color:var(--accent-cta);
-            padding-bottom:8px;
+        .campo-grupo { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-size: 12px; color: var(--accent-cta); font-weight: bold; text-transform: uppercase; }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background: #000; color: #22c55e;
+            border: 1px solid var(--border);
+            padding: 10px; font-family: 'Consolas', monospace;
+            box-sizing: border-box;
+            border-radius: 4px;
         }
 
-        .tabela-credenciais th,
-        .tabela-credenciais td {
-            padding:10px;
-            border:1px solid var(--border);
-            font-family: 'Consolas','Menlo','Courier New',monospace;
-            font-size:14px;
+        .btn-group { margin-top: 15px; display: flex; gap: 10px; }
+
+        .btn {
+            padding: 12px 20px; border-radius: 4px; border: none;
+            cursor: pointer; font-weight: bold; font-size: 11px;
+            text-transform: uppercase; transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-export { background: #10b981; color: white; }
+
+        /* Tabela Institucional */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; margin-top: 10px; }
+        th { 
+            background: var(--muted-bg); color: var(--accent-cta); 
+            padding: 12px; border: 1px solid var(--border); 
+            text-transform: uppercase; font-size: 12px; 
+        }
+        td { padding: 12px; border: 1px solid var(--border); font-size: 14px; }
+
+        .coluna-aluno { 
+            font-family: 'Verdana', Geneva, sans-serif; 
+            text-transform: uppercase; font-weight: 600; 
         }
 
-        .tabela-credenciais th{
-            background:var(--muted-bg);
-            color:var(--accent-cta);
-            text-align:center;
-        }
-
-        .coluna-aluno { text-align:left; width:40%; font-weight:600; color:var(--text); }
-
-        .login-cell {
-            display:flex;
-            gap:8px;
-            align-items:center;
-            justify-content:space-between;
-        }
-
-        .login-text {
-            flex:1 1 auto;
-            text-align:left;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-        }
-
+        .login-cell { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .copy-btn {
-            background:var(--accent);
-            color:var(--bg);
-            border:0;
-            padding:6px 10px;
-            border-radius:4px;
-            cursor:pointer;
-            font-weight:700;
-            font-size:13px;
-        }
-        .copy-btn:hover, .copy-btn:focus {
-            background:var(--accent-strong);
-            outline: 2px solid rgba(255,255,255,0.06);
+            background: var(--accent); color: white; border: none;
+            padding: 6px 12px; border-radius: 3px; cursor: pointer; font-size: 10px;
+            text-transform: uppercase; font-weight: bold;
         }
 
         .toast {
-            position:fixed;
-            left:50%;
-            bottom:24px;
-            transform:translateX(-50%);
-            background:var(--toast-bg);
-            color:var(--toast-text);
-            padding:10px 14px;
-            border-radius:var(--radius);
-            box-shadow:0 6px 18px rgba(0,0,0,0.4);
-            display:none;
-            z-index:10000;
-            font-weight:700;
-        }
-        .toast.show { display:block; animation:toast-in 200ms ease; }
-        @keyframes toast-in { from { opacity:0; transform:translateX(-50%) translateY(8px);} to { opacity:1; transform:translateX(-50%) translateY(0);} }
-
-        .sr-only {
-            position:absolute!important;
-            height:1px; width:1px;
-            overflow:hidden;
-            clip:rect(1px,1px,1px,1px);
-            white-space:nowrap;
-        }
-
-        @media (max-width:480px) {
-            .tabela-credenciais th, .tabela-credenciais td { padding:8px; font-size:13px; }
-            .copy-btn { padding:6px 8px; font-size:12px; }
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: var(--toast-bg); color: white; padding: 10px 20px;
+            border-radius: 20px; display: none; font-weight: bold; z-index: 1000;
         }
     </style>
 </head>
 <body>
-    <h1>Lista de Alunos</h1>
 
-    <div class="table-wrap" role="region" aria-label="Tabela de credenciais dos alunos">
-        <table class="tabela-credenciais" aria-describedby="table-desc" id="cred-table">
-            <caption>Logins e senhas</caption>
+<div class="container">
+    <h1 id="titulo-pagina">1º ANO A</h1>
+
+    
+
+    <div class="table-wrap">
+        <table>
             <thead>
                 <tr>
-                    <th scope="col" class="coluna-aluno">Aluno</th>
-                    <th scope="col">Login (JPI)</th>
-                    <th scope="col">Senha</th>
+                    <th>Aluno</th>
+                    <th>Login</th>
+                    <th>Senha</th>
                 </tr>
             </thead>
-            <tbody id="tbody-credenciais">
-                </tbody>
+            <tbody id="corpo-tabela"><tr>
+                <td class="coluna-aluno">Alice Maria Marquesi Lopes</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14350</span>
+                        <button class="copy-btn" onclick="copiar('JPI14350')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Augusto Alves de Almeida</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14367</span>
+                        <button class="copy-btn" onclick="copiar('JPI14367')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Daniela de Luna Ferreira Rodrigues</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14343</span>
+                        <button class="copy-btn" onclick="copiar('JPI14343')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Enzo Hiroshi de Carvalho Kusaka</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14352</span>
+                        <button class="copy-btn" onclick="copiar('JPI14352')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Felipe Perdomo Beijós</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14356</span>
+                        <button class="copy-btn" onclick="copiar('JPI14356')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Fernanda Souza Ribeiro</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14372</span>
+                        <button class="copy-btn" onclick="copiar('JPI14372')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Gabriel Mohallem Fonseca</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14347</span>
+                        <button class="copy-btn" onclick="copiar('JPI14347')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Gustavo Kenichi Nakazato Hasegawa</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14393</span>
+                        <button class="copy-btn" onclick="copiar('JPI14393')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Henrique Buono Ortencio</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14351</span>
+                        <button class="copy-btn" onclick="copiar('JPI14351')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Julio Wensing Tambellini</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14362</span>
+                        <button class="copy-btn" onclick="copiar('JPI14362')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Laura Giuliano Mizohata</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14354</span>
+                        <button class="copy-btn" onclick="copiar('JPI14354')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Manuela Reichel Lakatos</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14341</span>
+                        <button class="copy-btn" onclick="copiar('JPI14341')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Marina de Magalhães Vergara</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14359</span>
+                        <button class="copy-btn" onclick="copiar('JPI14359')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Matheus Haru Almeida Xavier de Lima</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14385</span>
+                        <button class="copy-btn" onclick="copiar('JPI14385')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Patricia Busch Pruni</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14390</span>
+                        <button class="copy-btn" onclick="copiar('JPI14390')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Rafaela Grozinski Rossi</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14340</span>
+                        <button class="copy-btn" onclick="copiar('JPI14340')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Samantha Fellows Marinho</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14346</span>
+                        <button class="copy-btn" onclick="copiar('JPI14346')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr><tr>
+                <td class="coluna-aluno">Santiago Pereira Leite</td>
+                <td>
+                    <div class="login-cell">
+                        <span>JPI14357</span>
+                        <button class="copy-btn" onclick="copiar('JPI14357')">Copiar</button>
+                    </div>
+                </td>
+                <td style="text-align:center; color:#666; font-family:monospace;">aluno2026</td>
+            </tr></tbody>
         </table>
     </div>
+</div>
 
-    <div id="toast" class="toast" role="status" aria-live="polite">Copiado para a área de transferência</div>
+<div id="toast" class="toast">Copiado!</div>
 
-    <script>
-        const dadosAlunos = [
-            { aluno: 'Alice Maria Marquesi Lopes', login: 'JPI14350', senha: '********' },
-            { aluno: 'Augusto Alves de Almeida', login: 'JPI14367', senha: '********' },
-            { aluno: 'Daniela de Luna Ferreira Rodrigues', login: 'JPI14343', senha: '********' },
-            { aluno: 'Enzo Hiroshi de Carvalho Kusaka', login: 'JPI14352', senha: '********' },
-            { aluno: 'Felipe Perdomo Beijós', login: 'JPI14356', senha: '********' },
-            { aluno: 'Fernanda Souza Ribeiro', login: 'JPI14372', senha: '********' },
-            { aluno: 'Gabriel Mohallem Fonseca', login: 'JPI14347', senha: '********' },
-            { aluno: 'Gustavo Kenichi Nakazato Hasegawa', login: 'JPI14393', senha: '********' },
-            { aluno: 'Henrique Buono Ortencio', login: 'JPI14351', senha: '********' },
-            { aluno: 'Julio Wensing Tambellini', login: 'JPI14362', senha: '********' },
-            { aluno: 'Laura Giuliano Mizohata', login: 'JPI14354', senha: '********' },
-            { aluno: 'Manuela Reichel Lakatos', login: 'JPI14341', senha: '********' },
-            { aluno: 'Marina de Magalhães Vergara', login: 'JPI14359', senha: '********' },
-            { aluno: 'Matheus Haru Almeida Xavier de Lima', login: 'JPI14385', senha: '********' },
-            { aluno: 'Patricia Busch Pruni', login: 'JPI14390', senha: '********' },
-            { aluno: 'Rafaela Grozinski Rossi', login: 'JPI14340', senha: '********' },
-            { aluno: 'Samantha Fellows Marinho', login: 'JPI14346', senha: '********' },
-            { aluno: 'Santiago Pereira Leite', login: 'JPI14357', senha: '********' },
-            // Espaços genéricos para facilitar adição posterior
-            { aluno: 'Aluno Novo 19', login: 'JPI00000', senha: '********' },
-            { aluno: 'Aluno Novo 20', login: 'JPI00000', senha: '********' }
-        ];
+<script id="script-util"><br>            function copiar(texto) {<br>                navigator.clipboard.writeText(texto).then(() => {<br>                    const t = document.getElementById('toast');<br>                    t.style.display = 'block';<br>                    setTimeout(() => t.style.display = 'none', 1200);<br>                });<br>            }<br>        </script>
 
-        function popularTabela(dados) {
-            const tbody = document.getElementById('tbody-credenciais');
-            tbody.innerHTML = ''; 
 
-            dados.forEach((item) => {
-                const tr = document.createElement('tr');
 
-                const tdAluno = document.createElement('td');
-                tdAluno.className = 'coluna-aluno';
-                tdAluno.textContent = item.aluno;
-                tr.appendChild(tdAluno);
-
-                const tdLogin = document.createElement('td');
-                const wrapper = document.createElement('div');
-                wrapper.className = 'login-cell';
-
-                const spanLogin = document.createElement('span');
-                spanLogin.className = 'login-text';
-                spanLogin.textContent = item.login;
-                spanLogin.dataset.login = item.login;
-
-                const btnCopy = document.createElement('button');
-                btnCopy.type = 'button';
-                btnCopy.className = 'copy-btn';
-                btnCopy.textContent = 'Copiar';
-                btnCopy.setAttribute('aria-label', `Copiar login do ${item.aluno}`);
-
-                wrapper.appendChild(spanLogin);
-                wrapper.appendChild(btnCopy);
-                tdLogin.appendChild(wrapper);
-                tr.appendChild(tdLogin);
-
-                const tdSenha = document.createElement('td');
-                const senhaSpan = document.createElement('span');
-                senhaSpan.setAttribute('aria-hidden', 'true');
-                senhaSpan.textContent = item.senha;
-                tdSenha.appendChild(senhaSpan);
-
-                const sr = document.createElement('span');
-                sr.className = 'sr-only';
-                sr.textContent = 'Senha protegida';
-                tdSenha.appendChild(sr);
-
-                tr.appendChild(tdSenha);
-                tbody.appendChild(tr);
-            });
-        }
-
-        popularTabela(dadosAlunos);
-
-        document.addEventListener('click', function (event) {
-            const btn = event.target.closest('.copy-btn');
-            if (!btn) return;
-            const row = btn.closest('tr');
-            if (!row) return;
-
-            const loginSpan = row.querySelector('.login-text');
-            const loginVal = loginSpan ? (loginSpan.dataset.login || loginSpan.textContent.trim()) : null;
-            if (!loginVal) return;
-            
-            copyLogin(loginVal, btn);
-        });
-
-        function copyLogin(textToCopy, triggeringButton) {
-            const toast = document.getElementById('toast');
-
-            const showToast = (msg) => {
-                toast.textContent = msg;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 1500);
-            };
-
-            const original = triggeringButton.innerHTML;
-            triggeringButton.textContent = 'Copiado!';
-            setTimeout(() => {
-                triggeringButton.innerHTML = original;
-            }, 1400);
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showToast('Login copiado: ' + textToCopy);
-                }).catch(() => fallbackCopyTextToClipboard(textToCopy, showToast));
-            } else {
-                fallbackCopyTextToClipboard(textToCopy, showToast);
-            }
-        }
-
-        function fallbackCopyTextToClipboard(text, onSuccess) {
-            try {
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                textarea.style.position = 'fixed';
-                textarea.style.left = '-9999px';
-                document.body.appendChild(textarea);
-                textarea.focus();
-                textarea.select();
-                const successful = document.execCommand('copy');
-                document.body.removeChild(textarea);
-                if (successful) onSuccess('Login copiado');
-            } catch (err) {
-                alert('Erro ao copiar.');
-            }
-        }
-    </script>
-</body>
-</html>
+</body></html>
