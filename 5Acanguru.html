@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LISTA_CREDENCIAIS</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#c8c8c8;font-family:'Barlow',sans-serif;padding:32px 20px}
+.container{max-width:900px;margin:0 auto}
+h1{font-size:11px;font-family:'Share Tech Mono',monospace;color:#06b6d4;letter-spacing:4px;text-transform:uppercase;margin-bottom:4px}
+h2{font-size:22px;font-weight:700;color:#e8e8e8;text-transform:uppercase;margin-bottom:28px}
+.table-wrap{overflow-x:auto;border:1px solid #252525;border-radius:4px}
+table{width:100%;border-collapse:collapse;min-width:480px}
+thead tr{background:#1a1a1a;border-bottom:1px solid #333}
+th{padding:11px 14px;font-family:'Share Tech Mono',monospace;font-size:10px;color:#555;text-transform:uppercase;letter-spacing:2px;text-align:left}
+tbody tr{border-bottom:1px solid #252525;transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#141414}
+td{padding:11px 14px;font-size:14px;vertical-align:middle}
+.coluna-num{font-family:'Share Tech Mono',monospace;font-size:11px;color:#555;width:36px;text-align:center}
+.coluna-aluno{text-transform:uppercase;font-weight:600;font-size:13px;color:#e8e8e8}
+.cell-mono{font-family:'JetBrains Mono','Share Tech Mono',monospace;font-size:15px;letter-spacing:0.07em;color:#22c55e}
+.cell-senha{font-family:'Share Tech Mono',monospace}
+.senha-mask{color:#555;letter-spacing:2px}
+.senha-visible{color:#f59e0b;display:none}
+.copy-btn,.ver-btn{margin-left:10px;background:transparent;border:1px solid #333;color:#555;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;text-transform:uppercase;transition:all .15s}
+.copy-btn:hover{color:#06b6d4;border-color:#06b6d4}
+.ver-btn:hover{color:#f59e0b;border-color:#f59e0b}
+.copy-btn.copied{color:#22c55e;border-color:#22c55e}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);background:#141414;border:1px solid #06b6d4;color:#06b6d4;padding:10px 22px;border-radius:20px;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:1000}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Credenciais //</h1>
+<h2>LISTA_CREDENCIAIS</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>Aluno</th><th>Login</th><th>Senha</th></tr></thead>
+<tbody>
+            <tr>
+                <td class="coluna-num">1</td>
+                <td class="coluna-aluno">BEATRIZ DA SILVA SETA</td>
+                <td class="cell-mono">ΒΤΑΙ@738
+                    <button class="copy-btn" data-login="ΒΤΑΙ@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-0">••••••••</span>
+                    <span class="senha-visible" id="vis-0" style="display:none">ΒΤΑΙ@73825</span>
+                    <button class="ver-btn" data-idx="0">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">2</td>
+                <td class="coluna-aluno">BEATRIZ MENDES DOS SANTOS</td>
+                <td class="cell-mono">BTEN@738
+                    <button class="copy-btn" data-login="BTEN@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-1">••••••••</span>
+                    <span class="senha-visible" id="vis-1" style="display:none">BTEN@73825</span>
+                    <button class="ver-btn" data-idx="1">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">3</td>
+                <td class="coluna-aluno">BENJAMIN ANDRADE RIBEIRO</td>
+                <td class="cell-mono">BJA@738
+                    <button class="copy-btn" data-login="BJA@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-2">••••••••</span>
+                    <span class="senha-visible" id="vis-2" style="display:none">BJA@73825</span>
+                    <button class="ver-btn" data-idx="2">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">4</td>
+                <td class="coluna-aluno">ENZO KENJI YOSHIMURA SANTANA</td>
+                <td class="cell-mono">ΕΟΙΥ@738
+                    <button class="copy-btn" data-login="ΕΟΙΥ@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-3">••••••••</span>
+                    <span class="senha-visible" id="vis-3" style="display:none">EOIY@73825</span>
+                    <button class="ver-btn" data-idx="3">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">5</td>
+                <td class="coluna-aluno">FELIPE ANTERO DOS SF FERREIRA</td>
+                <td class="cell-mono">FIT@738
+                    <button class="copy-btn" data-login="FIT@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-4">••••••••</span>
+                    <span class="senha-visible" id="vis-4" style="display:none">FIT@73825</span>
+                    <button class="ver-btn" data-idx="4">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">6</td>
+                <td class="coluna-aluno">GABRIELA FIGUEIRA JARDIM</td>
+                <td class="cell-mono">GRF@738
+                    <button class="copy-btn" data-login="GRF@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-5">••••••••</span>
+                    <span class="senha-visible" id="vis-5" style="display:none">GRF@73825</span>
+                    <button class="ver-btn" data-idx="5">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">7</td>
+                <td class="coluna-aluno">GABRIELA MAYUMI ΝΑΚΑΝΟ</td>
+                <td class="cell-mono">GRMY@738
+                    <button class="copy-btn" data-login="GRMY@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-6">••••••••</span>
+                    <span class="senha-visible" id="vis-6" style="display:none">GRMY@73825</span>
+                    <button class="ver-btn" data-idx="6">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">8</td>
+                <td class="coluna-aluno">GIOVANNA BOBRICK BACIEGA</td>
+                <td class="cell-mono">GVB@738
+                    <button class="copy-btn" data-login="GVB@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-7">••••••••</span>
+                    <span class="senha-visible" id="vis-7" style="display:none">GVB@73825</span>
+                    <button class="ver-btn" data-idx="7">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">9</td>
+                <td class="coluna-aluno">HENRIQUE PORTA DE MENDONÇA</td>
+                <td class="cell-mono">HRP@738
+                    <button class="copy-btn" data-login="HRP@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-8">••••••••</span>
+                    <span class="senha-visible" id="vis-8" style="display:none">HRP@73825</span>
+                    <button class="ver-btn" data-idx="8">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">10</td>
+                <td class="coluna-aluno">KAUÊ SILVA FERREIRINHA F GALASSO</td>
+                <td class="cell-mono">KEA@738
+                    <button class="copy-btn" data-login="KEA@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-9">••••••••</span>
+                    <span class="senha-visible" id="vis-9" style="display:none">KEA@73825</span>
+                    <button class="ver-btn" data-idx="9">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">11</td>
+                <td class="coluna-aluno">LEONARDO SCHRAMMEL DE FARIA</td>
+                <td class="cell-mono">LNS@738
+                    <button class="copy-btn" data-login="LNS@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-10">••••••••</span>
+                    <span class="senha-visible" id="vis-10" style="display:none">LNS@73825</span>
+                    <button class="ver-btn" data-idx="10">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">12</td>
+                <td class="coluna-aluno">LIVIA PATARRO LEAL</td>
+                <td class="cell-mono">LIAO@738
+                    <button class="copy-btn" data-login="LIAO@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-11">••••••••</span>
+                    <span class="senha-visible" id="vis-11" style="display:none">LIAO@73825</span>
+                    <button class="ver-btn" data-idx="11">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">13</td>
+                <td class="coluna-aluno">LUCAS DE ANDRADE SIRQUEIRA</td>
+                <td class="cell-mono">LAND@738
+                    <button class="copy-btn" data-login="LAND@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-12">••••••••</span>
+                    <span class="senha-visible" id="vis-12" style="display:none">LAND@73825</span>
+                    <button class="ver-btn" data-idx="12">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">14</td>
+                <td class="coluna-aluno">LUCCA DOMINGUES ZANI</td>
+                <td class="cell-mono">LCIN@738
+                    <button class="copy-btn" data-login="LCIN@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-13">••••••••</span>
+                    <span class="senha-visible" id="vis-13" style="display:none">LCIN@73825</span>
+                    <button class="ver-btn" data-idx="13">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">15</td>
+                <td class="coluna-aluno">MARIA BIANCALANA C DE CARVALHO</td>
+                <td class="cell-mono">MINC@738
+                    <button class="copy-btn" data-login="MINC@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-14">••••••••</span>
+                    <span class="senha-visible" id="vis-14" style="display:none">MINC@73825</span>
+                    <button class="ver-btn" data-idx="14">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">16</td>
+                <td class="coluna-aluno">MATEUS RODRIGUES NOGUEIRA</td>
+                <td class="cell-mono">MED@738
+                    <button class="copy-btn" data-login="MED@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-15">••••••••</span>
+                    <span class="senha-visible" id="vis-15" style="display:none">MED@73825</span>
+                    <button class="ver-btn" data-idx="15">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">17</td>
+                <td class="coluna-aluno">MATHEUS KELTKE BURMAN</td>
+                <td class="cell-mono">MHEL@738
+                    <button class="copy-btn" data-login="MHEL@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-16">••••••••</span>
+                    <span class="senha-visible" id="vis-16" style="display:none">MHEL@73825</span>
+                    <button class="ver-btn" data-idx="16">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">18</td>
+                <td class="coluna-aluno">PEDRO GONÇALVES LIMA PRADO</td>
+                <td class="cell-mono">PRCA@738
+                    <button class="copy-btn" data-login="PRCA@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-17">••••••••</span>
+                    <span class="senha-visible" id="vis-17" style="display:none">PRCA@73825</span>
+                    <button class="ver-btn" data-idx="17">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">19</td>
+                <td class="coluna-aluno">RAFAEL HIROSHI PRADO GUNZI</td>
+                <td class="cell-mono">RARO@738
+                    <button class="copy-btn" data-login="RARO@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-18">••••••••</span>
+                    <span class="senha-visible" id="vis-18" style="display:none">RARO@73825</span>
+                    <button class="ver-btn" data-idx="18">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">20</td>
+                <td class="coluna-aluno">SOPHIA ROVAGNOLI BROGE</td>
+                <td class="cell-mono">SHVA@738
+                    <button class="copy-btn" data-login="SHVA@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-19">••••••••</span>
+                    <span class="senha-visible" id="vis-19" style="display:none">SHVA@73825</span>
+                    <button class="ver-btn" data-idx="19">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">21</td>
+                <td class="coluna-aluno">VITOR LAGO MONTEIRO</td>
+                <td class="cell-mono">VOOO@738
+                    <button class="copy-btn" data-login="VOOO@738">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-20">••••••••</span>
+                    <span class="senha-visible" id="vis-20" style="display:none">VOOO@73825</span>
+                    <button class="ver-btn" data-idx="20">Ver</button>
+                </td>
+            </tr></tbody>
+</table>
+</div>
+</div>
+<div id="toast" class="toast"></div>
+<script>
+function toast(m,c){const t=document.getElementById('toast');t.textContent=m;t.style.borderColor=c||'#06b6d4';t.style.color=c||'#06b6d4';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+function copiar(texto,btn){
+  const ok=()=>{toast('Copiado!');if(btn){btn.textContent='✓ Ok';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('copied')},1500)}};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(texto).then(ok).catch(()=>fb(texto,ok));}else{fb(texto,ok);}
+}
+function fb(t,cb){const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);a.focus();a.select();try{if(document.execCommand('copy'))cb();}catch(e){}document.body.removeChild(a);}
+document.querySelectorAll('.copy-btn').forEach(b=>b.addEventListener('click',()=>copiar(b.dataset.login,b)));
+document.querySelectorAll('.ver-btn').forEach(b=>b.addEventListener('click',function(){
+  const i=this.dataset.idx;
+  const m=document.getElementById('mask-'+i);
+  const v=document.getElementById('vis-'+i);
+  const h=v.style.display==='none';
+  m.style.display=h?'none':'inline';
+  v.style.display=h?'inline':'none';
+  this.textContent=h?'Ocultar':'Ver';
+}));
+</script>
+</body></html>
