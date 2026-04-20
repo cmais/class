@@ -1,3 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Jigsaw Fullscreen</title>
 
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: black;
+  }
 
-<iframe src="https://www.jigsawplanet.com/?rc=play&amp;pid=26081384aaa3&amp;view=iframe&amp;bgcolor=0x000000" style="width:100%;height:600px" frameborder="0" allowfullscreen></iframe>
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <iframe id="jogo"
+    src="https://www.jigsawplanet.com/?rc=play&pid=26081384aaa3&view=iframe&bgcolor=0x000000"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<script>
+  document.addEventListener("keydown", function(event) {
+    if (event.key.toLowerCase() === "f") {
+      let elem = document.getElementById("container");
+
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+          console.log("Erro ao entrar em fullscreen:", err);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
