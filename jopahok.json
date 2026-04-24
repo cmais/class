@@ -1,0 +1,74 @@
+{
+  "rows": [
+    {
+      "timeEFAI": "07:55-08:40",
+      "timeEFAF": "07:00-07:45",
+      "cells": [
+        "<span style=\"color: rgb(246, 97, 81);\"><span style=\"color: rgb(198, 70, 0);\">7A</span></span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(198, 70, 0);\"><span style=\"color: rgb(224, 27, 36);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span></span></span>",
+        "",
+        "<span style=\"color: rgb(77, 166, 255);\">3B</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "-=-=-",
+        "<span style=\"color: rgb(237, 51, 59);\"><span style=\"color: rgb(246, 97, 81);\">7A</span></span>-<span style=\"color: rgb(38, 162, 105);\"><span style=\"color: rgb(87, 227, 137);\">Hab. Soc</span></span>"
+      ]
+    },
+    {
+      "timeEFAI": "08:40-09:25",
+      "timeEFAF": "07:45-08:30",
+      "cells": [
+        "<span style=\"color: rgb(246, 97, 81);\"><span style=\"color: rgb(198, 70, 0);\">6A</span></span>-<span style=\"color: rgb(230, 97, 0);\"><span style=\"color: rgb(230, 97, 0);\"><span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span></span></span>",
+        "<span style=\"color: rgb(53, 132, 228);\">5A</span>-<span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span>",
+        "<span style=\"color: rgb(77, 166, 255);\">1A</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "-=-=-",
+        "<span style=\"color: rgb(246, 97, 81);\">8A</span>-<span style=\"color: rgb(87, 227, 137);\">Hab. Soc</span>"
+      ]
+    },
+    {
+      "timeEFAI": "09:55-10:40",
+      "timeEFAF": "08:45-09:30",
+      "cells": [
+        "<span style=\"color: rgb(246, 97, 81);\"></span><span style=\"color: rgb(198, 70, 0);\"><span style=\"color: rgb(246, 97, 81);\"><span style=\"color: rgb(198, 70, 0);\">6B</span></span></span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "<span style=\"color: rgb(26, 95, 180);\"><span style=\"color: rgb(53, 132, 228);\">5B</span></span>-<span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span>",
+        "<span style=\"color: rgb(77, 166, 255);\">2A</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "-=-=-",
+        "-=-=-"
+      ]
+    },
+    {
+      "timeEFAI": "10:40-11:25",
+      "timeEFAF": "09:30-10:15",
+      "cells": [
+        "<span style=\"color: rgb(77, 166, 255);\">1B</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "",
+        "<span style=\"color: rgb(28, 113, 216);\">2B</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "-=-=-",
+        "<span style=\"color: rgb(246, 97, 81);\">6A</span>-<span style=\"color: rgb(87, 227, 137);\">Hab. Soc</span>"
+      ]
+    },
+    {
+      "timeEFAI": "10:40-11:25",
+      "timeEFAF": "10:30-11:15",
+      "cells": [
+        "<span style=\"color: rgb(77, 166, 255);\">4A</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "",
+        "<span style=\"color: rgb(77, 166, 255);\">3A</span>-<span style=\"color: rgb(255, 255, 0);\"><span style=\"color: rgb(229, 165, 10);\"><span style=\"color: rgb(220, 138, 221);\">MKR</span></span></span>",
+        "-=-=-",
+        "<span style=\"color: rgb(246, 97, 81);\">6B</span>-<span style=\"color: rgb(87, 227, 137);\">Hab. Soc</span>"
+      ]
+    },
+    {
+      "timeEFAI": "11:25-12:10",
+      "timeEFAF": "11:15-12:00",
+      "cells": [
+        "-=-=-",
+        "-=-=-",
+        "-=-=-",
+        "-=-=-",
+        "-=-=-"
+      ]
+    }
+  ],
+  "colors": {
+    "EFAI": "#4da6ff",
+    "EFAF": "#c64600"
+  }
+}
