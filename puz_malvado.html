@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mario</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>">
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: black;
+  }
+
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <iframe id="jogo"
+    src="https://www.jigsawplanet.com/?rc=play&pid=28398c8427c7&view=iframe&bgcolor=0x000000"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<script>
+  document.addEventListener("keydown", function(event) {
+    if (event.key.toLowerCase() === "f") {
+      let elem = document.getElementById("container");
+
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+          console.log("Erro ao entrar em fullscreen:", err);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
