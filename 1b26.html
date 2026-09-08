@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>1B26</title>
+<title>1B</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -20,17 +20,19 @@ tbody tr:hover{background:#141414}
 td{padding:11px 14px;font-size:14px;vertical-align:middle}
 .coluna-num{font-family:'Share Tech Mono',monospace;font-size:11px;color:#555;width:36px;text-align:center}
 .coluna-aluno{text-transform:uppercase;font-weight:600;font-size:13px;color:#e8e8e8;font-family:'Roboto',sans-serif}
-.cell-login{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.03em;color:#22c55e}
+.coluna-aluno a.link-aluno{color:#e8e8e8;text-decoration:none;cursor:pointer;transition:color .15s}
+.coluna-aluno a.link-aluno:hover{color:#f59e0b;text-decoration:underline}
+.cell-login{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.03em;color:#f59e0b}
 .cell-senha{font-family:'Share Tech Mono',monospace;white-space:nowrap}
 .senha-mask{color:#555;letter-spacing:2px}
 .senha-visible{font-family:'Inter',sans-serif;font-weight:400;font-size:14px;letter-spacing:0.04em;color:#f59e0b}
 .copy-btn,.ver-btn,.copy-senha-btn{margin-left:10px;background:transparent;border:1px solid #333;color:#555;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;text-transform:uppercase;transition:all .15s}
 .copy-btn:hover{color:#06b6d4;border-color:#06b6d4}
 .ver-btn:hover{color:#f59e0b;border-color:#f59e0b}
-.copy-btn.copied{color:#22c55e;border-color:#22c55e}
+.copy-btn.copied{color:#f59e0b;border-color:#f59e0b}
 .copy-senha-btn{border-color:#78350f;color:#f59e0b}
 .copy-senha-btn:hover{background:rgba(245,158,11,0.08);border-color:#f59e0b}
-.copy-senha-btn.copied{color:#22c55e;border-color:#22c55e}
+.copy-senha-btn.copied{color:#f59e0b;border-color:#f59e0b}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);background:#141414;border:1px solid #06b6d4;color:#06b6d4;padding:10px 22px;border-radius:20px;font-family:'Share Tech Mono',monospace;font-size:12px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:1000}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -38,14 +40,18 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
 <body>
 <div class="container">
 <h1>Credenciais //</h1>
-<h2>1B26</h2>
+<h2>1B</h2>
 <div class="table-wrap">
 <table>
 <thead><tr><th>#</th><th>Aluno</th><th>Login</th><th>Senha</th></tr></thead>
 <tbody>
             <tr>
                 <td class="coluna-num">1</td>
-                <td class="coluna-aluno">ARTHUR DOS SANTOS TEIXEIRA</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14363"
+                       onclick="copiarLoginEAbrir(event, this)">ARTHUR DOS SANTOS TEIXEIRA</a>
+                </td>
                 <td class="cell-login">JPI14363
                     <button class="copy-btn" data-login="JPI14363">Copiar</button>
                 </td>
@@ -58,7 +64,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">2</td>
-                <td class="coluna-aluno">ARTHUR MIYADA FOSCHINE</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14328"
+                       onclick="copiarLoginEAbrir(event, this)">ARTHUR MIYADA FOSCHINE</a>
+                </td>
                 <td class="cell-login">JPI14328
                     <button class="copy-btn" data-login="JPI14328">Copiar</button>
                 </td>
@@ -71,7 +81,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">3</td>
-                <td class="coluna-aluno">BENÍCIO MORAES DIAS MESSICI</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14364"
+                       onclick="copiarLoginEAbrir(event, this)">BENÍCIO MORAES DIAS MESSICI</a>
+                </td>
                 <td class="cell-login">JPI14364
                     <button class="copy-btn" data-login="JPI14364">Copiar</button>
                 </td>
@@ -84,7 +98,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">4</td>
-                <td class="coluna-aluno">GAEL DOS REIS CHAVES</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14353"
+                       onclick="copiarLoginEAbrir(event, this)">GAEL DOS REIS CHAVES</a>
+                </td>
                 <td class="cell-login">JPI14353
                     <button class="copy-btn" data-login="JPI14353">Copiar</button>
                 </td>
@@ -97,7 +115,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">5</td>
-                <td class="coluna-aluno">GUSTAVO KIMURA MELO</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14344"
+                       onclick="copiarLoginEAbrir(event, this)">GUSTAVO KIMURA MELO</a>
+                </td>
                 <td class="cell-login">JPI14344
                     <button class="copy-btn" data-login="JPI14344">Copiar</button>
                 </td>
@@ -110,7 +132,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">6</td>
-                <td class="coluna-aluno">JOÃO VICENTE DARBELLO TORRES</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14318"
+                       onclick="copiarLoginEAbrir(event, this)">JOÃO VICENTE DARBELLO TORRES</a>
+                </td>
                 <td class="cell-login">JPI14318
                     <button class="copy-btn" data-login="JPI14318">Copiar</button>
                 </td>
@@ -123,7 +149,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">7</td>
-                <td class="coluna-aluno">LARA SAKURAY DE MELO</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14374"
+                       onclick="copiarLoginEAbrir(event, this)">LARA SAKURAY DE MELO</a>
+                </td>
                 <td class="cell-login">JPI14374
                     <button class="copy-btn" data-login="JPI14374">Copiar</button>
                 </td>
@@ -136,7 +166,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">8</td>
-                <td class="coluna-aluno">LAURA NAOMI NAKANO</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14315"
+                       onclick="copiarLoginEAbrir(event, this)">LAURA NAOMI NAKANO</a>
+                </td>
                 <td class="cell-login">JPI14315
                     <button class="copy-btn" data-login="JPI14315">Copiar</button>
                 </td>
@@ -149,7 +183,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">9</td>
-                <td class="coluna-aluno">LUCCA BRASIL SILVA</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14366"
+                       onclick="copiarLoginEAbrir(event, this)">LUCCA BRASIL SILVA</a>
+                </td>
                 <td class="cell-login">JPI14366
                     <button class="copy-btn" data-login="JPI14366">Copiar</button>
                 </td>
@@ -162,7 +200,11 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">10</td>
-                <td class="coluna-aluno">MARIA BEATRIZ ESCOBAR SANTINHO</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14389"
+                       onclick="copiarLoginEAbrir(event, this)">MARIA BEATRIZ ESCOBAR SANTINHO</a>
+                </td>
                 <td class="cell-login">JPI14389
                     <button class="copy-btn" data-login="JPI14389">Copiar</button>
                 </td>
@@ -175,9 +217,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">11</td>
-                <td class="coluna-aluno">MAYA REBELO BANHEZA DE LIMA</td>
-                <td class="cell-login">JPI14348
-                    <button class="copy-btn" data-login="JPI14348">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14359"
+                       onclick="copiarLoginEAbrir(event, this)">MARINA DE MAGALHÃES VERGARA</a>
+                </td>
+                <td class="cell-login">JPI14359
+                    <button class="copy-btn" data-login="JPI14359">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-10">••••••••</span>
@@ -188,9 +234,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">12</td>
-                <td class="coluna-aluno">MELISSA CASALS FERRO</td>
-                <td class="cell-login">JPI14355
-                    <button class="copy-btn" data-login="JPI14355">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14348"
+                       onclick="copiarLoginEAbrir(event, this)">MAYA REBELO BANHEZA DE LIMA</a>
+                </td>
+                <td class="cell-login">JPI14348
+                    <button class="copy-btn" data-login="JPI14348">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-11">••••••••</span>
@@ -201,9 +251,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">13</td>
-                <td class="coluna-aluno">MURILO YUTO KUBOTA</td>
-                <td class="cell-login">JPI14345
-                    <button class="copy-btn" data-login="JPI14345">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14355"
+                       onclick="copiarLoginEAbrir(event, this)">MELISSA CASALS FERRO</a>
+                </td>
+                <td class="cell-login">JPI14355
+                    <button class="copy-btn" data-login="JPI14355">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-12">••••••••</span>
@@ -214,9 +268,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">14</td>
-                <td class="coluna-aluno">OTÁVIO FARAH MARINS</td>
-                <td class="cell-login">JPI14368
-                    <button class="copy-btn" data-login="JPI14368">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14345"
+                       onclick="copiarLoginEAbrir(event, this)">MURILO YUTO KUBOTA</a>
+                </td>
+                <td class="cell-login">JPI14345
+                    <button class="copy-btn" data-login="JPI14345">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-13">••••••••</span>
@@ -227,9 +285,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">15</td>
-                <td class="coluna-aluno">RAFAELA SOUZA RIBEIRO</td>
-                <td class="cell-login">JPI14373
-                    <button class="copy-btn" data-login="JPI14373">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14368"
+                       onclick="copiarLoginEAbrir(event, this)">OTÁVIO FARAH MARINS</a>
+                </td>
+                <td class="cell-login">JPI14368
+                    <button class="copy-btn" data-login="JPI14368">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-14">••••••••</span>
@@ -240,9 +302,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">16</td>
-                <td class="coluna-aluno">SOFIA SILVA SANTI</td>
-                <td class="cell-login">JPI14331
-                    <button class="copy-btn" data-login="JPI14331">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14373"
+                       onclick="copiarLoginEAbrir(event, this)">RAFAELA SOUZA RIBEIRO</a>
+                </td>
+                <td class="cell-login">JPI14373
+                    <button class="copy-btn" data-login="JPI14373">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-15">••••••••</span>
@@ -253,9 +319,13 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">17</td>
-                <td class="coluna-aluno">SOPHIA HELENA SILVA FERREIRA</td>
-                <td class="cell-login">JPI14342
-                    <button class="copy-btn" data-login="JPI14342">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14331"
+                       onclick="copiarLoginEAbrir(event, this)">SOFIA SILVA SANTI</a>
+                </td>
+                <td class="cell-login">JPI14331
+                    <button class="copy-btn" data-login="JPI14331">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-16">••••••••</span>
@@ -266,15 +336,36 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
             </tr>
             <tr>
                 <td class="coluna-num">18</td>
-                <td class="coluna-aluno">THOMAS ARAUJO MISUMI</td>
-                <td class="cell-login">JPI14370
-                    <button class="copy-btn" data-login="JPI14370">Copiar</button>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14342"
+                       onclick="copiarLoginEAbrir(event, this)">SOPHIA HELENA SILVA FERREIRA</a>
+                </td>
+                <td class="cell-login">JPI14342
+                    <button class="copy-btn" data-login="JPI14342">Copiar</button>
                 </td>
                 <td class="cell-senha">
                     <span class="senha-mask" id="mask-17">••••••••</span>
                     <span class="senha-visible" id="vis-17" style="display:none">aluno1974</span>
                     <button class="copy-senha-btn" id="copy-senha-17" data-senha="aluno1974" style="display:none">Copiar</button>
                     <button class="ver-btn" data-idx="17">Ver</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="coluna-num">19</td>
+                <td class="coluna-aluno">
+                    <a href="https://login.plurall.net/" target="_blank" class="link-aluno"
+                       data-login="JPI14370"
+                       onclick="copiarLoginEAbrir(event, this)">THOMAS ARAUJO MISUMI</a>
+                </td>
+                <td class="cell-login">JPI14370
+                    <button class="copy-btn" data-login="JPI14370">Copiar</button>
+                </td>
+                <td class="cell-senha">
+                    <span class="senha-mask" id="mask-18">••••••••</span>
+                    <span class="senha-visible" id="vis-18" style="display:none">aluno1974</span>
+                    <button class="copy-senha-btn" id="copy-senha-18" data-senha="aluno1974" style="display:none">Copiar</button>
+                    <button class="ver-btn" data-idx="18">Ver</button>
                 </td>
             </tr></tbody>
 </table>
@@ -283,6 +374,12 @@ td{padding:11px 14px;font-size:14px;vertical-align:middle}
 <div id="toast" class="toast"></div>
 <script>
 function toast(m,c){const t=document.getElementById('toast');t.textContent=m;t.style.borderColor=c||'#06b6d4';t.style.color=c||'#06b6d4';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+function copiarLoginEAbrir(e,el){
+  e.preventDefault();
+  const login=el.dataset.login;
+  const ok=()=>{toast('Login copiado! Abrindo Plurall...','#f59e0b');window.open('https://login.plurall.net/','_blank');};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(login).then(ok).catch(()=>fb(login,ok));}else{fb(login,ok);}
+}
 function copiar(texto,btn){
   const ok=()=>{toast('Copiado!');if(btn){btn.textContent='✓ Ok';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('copied')},1500)}};
   if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(texto).then(ok).catch(()=>fb(texto,ok));}else{fb(texto,ok);}
